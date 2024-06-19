@@ -7,5 +7,4 @@ mydb = mysql.connector.connect(
 )
 
 my_cursor = mydb.cursor()
-create_table = """CREATE TABLE """
 my_cursor.execute("CREATE DATABASE IF NOT EXISTS Groceries;")
