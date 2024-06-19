@@ -1,0 +1,14 @@
+<html>
+<head>
+    <title>Grocery List</title>
+</head>
+<body>
+    <h1>Grocery List</h1>
+    <a href="{% url 'home' %}">Back to Home</a>
+    <ul>
+        {% for item in items %}
+            <li>{{ item.name }} - ${{ item.price }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
