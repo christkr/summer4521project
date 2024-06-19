@@ -1,0 +1,17 @@
+<h2>Welcome to the Grocery Management System</h2>
+<ul>
+    <li><a href="{% url 'search_items' %}">Search Items</a></li>
+    <li><a href="{% url 'add_item' %}">Add Item</a></li>
+    <li><a href="{% url 'edit_item' 1 %}">Edit Item (example)</a></li>
+    <li><a href="{% url 'delete_item' 1 %}">Delete Item (example)</a></li>
+    {% if user.is_authenticated %}
+        <li>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        </li>
+    {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+    {% endif %}
+</ul>
