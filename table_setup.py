@@ -10,6 +10,6 @@ with mysql.connector.connect(
     query = "CREATE USER 'test'@'localhost' IDENTIFIED BY 'password';"
     cur.execute(query)
     cur.execute("FLUSH PRIVILEGES;")
-    cur.execute("GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT on *.* TO 'test'@'localhost';")
+    cur.execute("GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT on Groceries TO 'test'@'localhost';")
     cur.execute("FLUSH PRIVILEGES;")
 
