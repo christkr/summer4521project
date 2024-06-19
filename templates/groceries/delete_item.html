@@ -1,0 +1,15 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+</head>
+<h2>Delete Item</h2>
+<p>Are you sure you want to delete "{{ item.name }}"?</p>
+<body>
+    <div class="login-container">
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Yes, delete</button>
+        </form>
+        <a href="{% url 'home' %}">Back to Home</a>
+    </div>
+</body>

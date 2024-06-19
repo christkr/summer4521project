@@ -46,8 +46,6 @@ def delete_item(request, item_id):
         return redirect('search_items')
     return render(request, 'groceries/delete_item.html', {'item': item})
 
-@login_required
-@permission_required('groceries.all_items', raise_exception=True)
 def all_items(request):
     items = Item.objects.all()
     return render(request, 'groceries/all_items.html', {'items': items})
