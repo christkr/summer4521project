@@ -1,3 +1,7 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'all.css' %}">
+</head>
 <h2>Search Items</h2>
 <form method="get" action="{% url 'search_items' %}">
     <input type="text" name="q" placeholder="Search...">
@@ -11,3 +15,6 @@
         </li>
     {% endfor %}
 </ul>
+<body>
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>

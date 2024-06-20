@@ -1,9 +1,13 @@
+<head>
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+</head>
 <h2>Welcome to the Grocery Management System</h2>
 <ul>
-    <li><a href="{% url 'search_items' %}">Search Items</a></li>
-    <li><a href="{% url 'add_item' %}">Add Item</a></li>
-    <li><a href="{% url 'edit_item' 1 %}">Edit Item (example)</a></li>
-    <li><a href="{% url 'delete_item' 1 %}">Delete Item (example)</a></li>
+    <li><a href="{% url 'search_items' %}">Edit/Delete Items (Login Required)</a></li>
+    <li><a href="{% url 'add_item' %}">Add Item (Login Required) </a></li>
+    <li><a href="{% url 'all_items' %}"> All groceries </a></li>
     {% if user.is_authenticated %}
         <li>
             <form method="post" action="{% url 'logout' %}">
