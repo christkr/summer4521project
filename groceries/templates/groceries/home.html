@@ -1,0 +1,21 @@
+<head>
+    <title>Home</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+</head>
+<h2>Welcome to the Grocery Management System</h2>
+<ul>
+    <li><a href="{% url 'search_items' %}">Edit/Delete Items (Login Required)</a></li>
+    <li><a href="{% url 'add_item' %}">Add Item (Login Required) </a></li>
+    <li><a href="{% url 'all_items' %}"> All groceries </a></li>
+    {% if user.is_authenticated %}
+        <li>
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        </li>
+    {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+    {% endif %}
+</ul>

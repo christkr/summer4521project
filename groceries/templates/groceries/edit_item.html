@@ -1,0 +1,15 @@
+<head>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+</head>
+<h2>Edit Item</h2>
+<body>
+    <div class="login-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save Changes</button>
+        </form>
+        <a class = "back-home" href="{% url 'home' %}">Back to Home</a>
+    </div>
+</body>
