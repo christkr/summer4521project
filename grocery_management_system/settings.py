@@ -82,6 +82,29 @@ DATABASES = {
         'PASSWORD': 'mysql123',
         'HOST': 'localhost',
         'PORT': '3306',
+    },'dbadmin': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'groceries',
+        'USER': 'dbadmin',
+        'PASSWORD': 'admin_password',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    },
+    'manager': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'groceries',
+        'USER': 'manager',
+        'PASSWORD': 'manager_password',
+        'HOST': 'localhost',
+        'PORT': '3306', 
+    },
+    'employee': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'groceries',
+        'USER': 'employee',
+        'PASSWORD': 'employee_password',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
