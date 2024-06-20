@@ -8,9 +8,10 @@ Database Administrator - Manages the database.;
 Store Manager - Adds new items to the database as needed, and can update prices.;
 Store Employee - Can lookup items in the database and get their prices.
 
-Login:
-Username: "superuser"
-Password: "password"
+Logins:
+username='dbadmin_user', password='password'
+username='manager_user', password='password'
+username='employee_user', password='password'
 
 Database Schema:
 Item - (Name, Price)
