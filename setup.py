@@ -26,6 +26,7 @@ users = {
     }
 }
 
+
 def create_mysql_users():
     # Connect to MySQL server
     with mysql.connector.connect(**config) as conn:
@@ -43,17 +44,20 @@ def create_mysql_users():
         cur.close()
         conn.close()
 
+
 def install_dependencies():
     subprocess.check_call([os.sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'])
 
+
 def run_django_commands():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'your_project_name.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'grocery_management_system.settings')
     import django
     django.setup()
     from django.core.management import call_command
     call_command('makemigrations')
     call_command('migrate')
     call_command('setup_roles')
+
 
 def create_django_users():
     from django.contrib.auth.models import User, Group
@@ -77,7 +81,8 @@ def create_django_users():
 
     print("Django users have been created and assigned to groups.")
 
-def main():
+
+if __name__ == '__main__':
     print("Installing dependencies...")
     install_dependencies()
 
@@ -91,6 +96,3 @@ def main():
     create_django_users()
 
     print("Setup complete!")
-
-if __name__ == '__main__':
-    main()

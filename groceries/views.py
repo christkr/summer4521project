@@ -2,7 +2,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required, permission_required
 from .models import Item
 from .forms import ItemForm
-from django.db import connections
+from django.contrib.auth import logout
+
+
+def custom_logout_view(request):
+    logout(request)
+    return redirect('home')
+
 
 def get_db_connection(user):
     if user.groups.filter(name='dbadmin').exists():
@@ -13,8 +19,10 @@ def get_db_connection(user):
         return 'employee'
     return 'default'
 
+
 def home(request):
     return render(request, 'groceries/home.html')
+
 
 @login_required
 def search_items(request):
@@ -25,6 +33,7 @@ def search_items(request):
     else:
         items = Item.objects.using(db_conn).all()
     return render(request, 'groceries/search_items.html', {'items': items})
+
 
 @login_required
 @permission_required('groceries.add_item', raise_exception=True)
@@ -39,6 +48,7 @@ def add_item(request):
     else:
         form = ItemForm()
     return render(request, 'groceries/add_item.html', {'form': form})
+
 
 @login_required
 @permission_required('groceries.change_item', raise_exception=True)
@@ -55,6 +65,7 @@ def edit_item(request, item_id):
         form = ItemForm(instance=item)
     return render(request, 'groceries/edit_item.html', {'form': form})
 
+
 @login_required
 @permission_required('groceries.delete_item', raise_exception=True)
 def delete_item(request, item_id):
@@ -64,6 +75,7 @@ def delete_item(request, item_id):
         item.delete(using=db_conn)
         return redirect('search_items')
     return render(request, 'groceries/delete_item.html', {'item': item})
+
 
 def all_items(request):
     items = Item.objects.all()
